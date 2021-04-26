@@ -1,0 +1,44 @@
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img
+          class="card-img-top img-thumbnail"
+          src="{{product.image}}"
+          alt="{{product.title}}"
+        />
+
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+
+            <button class="btn btn-success w-100" >Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <table class="table table-borderless">
+        <div>
+          <tr>
+          <strong>{{ product.title}}</strong>
+          </tr>
+        </div>
+        <div>
+          <tr>
+            <td>
+          <strong>Description :</strong>
+          <p>{{ product.description}}</p>
+          </td>
+          <td>
+            <strong>Price</strong>
+            <p>{{ product.price |currency:'INR'}}</p>
+            </td>
+          </tr>
+        </div>
+
+
+      </table>
+    </div>
+  </div>
+</div>
