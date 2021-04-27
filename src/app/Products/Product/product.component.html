@@ -1,0 +1,14 @@
+<a [routerLink]="['/product/',product.id]">
+<div class="card mb-2">
+  <div class="card-img-wrapper">
+    <img class="card-img-top" height="200px" width="200px" src="{{product.image}}" alt="{{product.title}}">
+    <!-- <ul class="list-inline member-icons animate text-center">
+    </ul> -->
+  </div>
+</div>
+<div class="card-body p-1 text-dark">
+  <h6 class="card-title text-center mb-1">
+  {{product.title}}</h6>
+  <p class="card-text font-weight-bold text-center">{{product.price |currency:'INR'}}</p>
+</div>
+</a>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+<nav class="mb-4 navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
     <a class="navbar-brand" href="#">E-Kart</a>
 
@@ -10,14 +10,16 @@
     </ul>
     <div *ngIf="loggedIn()" class="dropdown" dropdown>
 
-      <a class=" dropdown-toggle text-light" dropdownToggle>
+      <a class=" dropdown-toggle text-dark font-weight-bold " dropdownToggle>
        Welcome! Kunal
       </a>
       <div class="dropdown-menu mt-3" *dropdownMenu>
-        <a class="dropdown-item">
-          <i class="fa fa-shopping-cart"></i>My Cart</a>
+        <a class="dropdown-item" [routerLink]="['/Cart']">
+          My Cart</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" (click)="Logout()"><i class ="fa fa-sign-out"></i>Logout</a>
+        <!-- <i class="fa fa-shopping-cart"></i> -->
+        <!-- <i class ="fa fa-sign-out"></i> -->
+        <a class="dropdown-item" (click)="Logout()">Logout</a>
       </div>
     </div>
     <form *ngIf="!loggedIn()" class="form-inline my-2 my-lg-0" (ngSubmit)="login()" [formGroup]="loginForm">
@@ -25,8 +27,11 @@
       placeholder="Username" formControlName = "Username">
       <input class="form-control mr-sm-2" type="password" required name="Password"
       placeholder="Password" formControlName="Password">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">
+      <button class="btn btn-success my-2 my-sm-0 mr-1" [disabled]="!loginForm.valid" type="submit">
         Login
+      </button>
+      <button class="btn btn-dark my-2 my-sm-0" (click)="Register()"type="button">
+        SignUp
       </button>
     </form>
 

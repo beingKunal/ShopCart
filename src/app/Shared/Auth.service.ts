@@ -1,8 +1,8 @@
-import { User } from './../_Models/User';
+import { User } from '../Products/_Models/User';
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from 'src/app/_Models/Product';
+import { Product } from 'src/app/Products/_Models/Product';
 import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
