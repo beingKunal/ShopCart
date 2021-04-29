@@ -32,7 +32,7 @@ export class NavComponent implements OnInit {
   login() {
     this.authService.login(this.loginForm.value).subscribe(
       (response) => {
-        this.toastr.success('login Successful');
+        this.toastr.success('login Successful','',{positionClass: 'toast-bottom-right'});
       },
       (error) => {
         this.toastr.error('Login Error');
@@ -49,6 +49,7 @@ export class NavComponent implements OnInit {
 
   Logout() {
     localStorage.removeItem('token');
+    this.toastr.success('LogOut Succesfully','',{positionClass: 'toast-bottom-right'});
     this.router.navigate(['']);
   }
 

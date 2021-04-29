@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.user = this.registerForm.value;
-    this.toastr.success('Registered Succesfully');
+    this.toastr.success('Registered Succesfully','',{positionClass: 'toast-bottom-right'});
 
     this.authService.login(this.user).subscribe(() => {
       this.router.navigate(['']);
