@@ -40,11 +40,20 @@ export class ProductGridComponent implements OnInit, OnDestroy {
         this.products = data;
         this.products.length <= 0
           ? this.toastr.info('Please use different keywords', 'No products', {
-              positionClass: 'toast-center-center'
-
+              positionClass: 'toast-center-center',
             })
           : null;
       });
+  }
+  categoryFilter(event) {
+    this.productService.filterProductsByCategory(event).subscribe((data) => {
+      this.products = data;
+      this.products.length <= 0
+        ? this.toastr.info('No product under specific category', 'No products', {
+            positionClass: 'toast-center-center',
+          })
+        : null;
+    });
   }
 
   ngOnDestroy() {

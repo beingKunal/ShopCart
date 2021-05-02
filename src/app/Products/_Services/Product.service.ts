@@ -30,4 +30,9 @@ export class ProductService{
     .pipe(map(data => data.filter(product => product.description.includes(keyword)
                                   || product.title.includes(keyword))));
   }
+
+  getCategories(){
+    // https://fakestoreapi.com/products/categories
+    return this.http.get<string[]>(this.baseUrl+'/products/categories')
+  }
 }

@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Product } from '../../Products/_Models/Product';
 import { ActivatedRoute } from '@angular/router';
 import { CartServiceService } from './../cart-service.service';
@@ -7,12 +8,13 @@ import { Cart } from '../_models/Cart';
 @Component({
   selector: 'app-cart-items',
   templateUrl: './cart-items.component.html',
-  styleUrls: ['./cart-items.component.css'],
+  styleUrls: ['./cart-items.component.scss'],
 })
 export class CartItemsComponent implements OnInit {
   constructor(
     private cartService: CartServiceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastr:ToastrService
   ) {}
   cartItems: Cart;
   totalPrice: number = 0;
@@ -44,9 +46,11 @@ export class CartItemsComponent implements OnInit {
   }
 
   increaseQty(product: Product) {
-    product.quantity < 4 ? (product.quantity += 1) : console.log('Limit is 4');
+    product.quantity < 4 ? (product.quantity += 1) : this.toastr.warning("Oops! Cannot exceed 4 quantities");
+    this.getTotalPrice()
   }
   decreaseQty(product: Product) {
-    product.quantity == 1 ? (product.quantity -= 1) : 1;
+    product.quantity == 1 ?  this.toastr.warning("Please remove item from Cart"):(product.quantity -= 1) ;
+    this.getTotalPrice()
   }
 }

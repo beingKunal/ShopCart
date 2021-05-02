@@ -38,7 +38,7 @@
 </div> -->
 
 <!-- <div class="row">
-  <h5 class="card-title">My Cart ({{ cartItems.products.length }})</h5>
+  <h5 class="card-title"></h5>
   <div style="width:60%;">
     <div style="height: 70%;  overflow-y: scroll;" >
       <table class="table table-hover" *ngFor="let product of cartItems.products">
@@ -107,8 +107,11 @@
   </div>
 
   <ng-container  *ngIf="cartItems.products.length !== 0">
+    <div class="text-center" style="position: fixed;">
+      <p>My Cart ({{ cartItems.products.length }})</p>
+    </div>
     <div class="row">
-      <div style="height: 400px; overflow-y: scroll;" class="col my-4">
+      <div style="height: 300px; overflow-y: scroll;" class="col my-4">
         <table class="table">
           <thead class="table-dark">
           <tr class="text-center">
@@ -125,7 +128,7 @@
               <img [src]="product.image" alt="{{product.title}}" height="60" class="order-1">
               <span class="text-danger" style="cursor: pointer;"><i class="fa fa-trash" (click)="Remove(product)"></i></span>
             </td>
-            <td><p>{{product.title}}</p></td>
+            <td><a [routerLink]="['/product/',product.id]">{{product.title}}</a></td>
             <td>
               <p>{{product.price | currency:'USD'}}</p>
             </td>
@@ -134,14 +137,14 @@
                 <div class="value-button" id="decrease" (click)="decreaseQty(product)">
                   <i class="fa fa-minus"></i>
                 </div>
-                <input type="number" id="number" value= readonly [max]="product.quantity" />
+                <input type="number" id="number" value={{product.quantity}} />
                 <div class="value-button" id="increase" (click)="increaseQty(product)">
                   <i class="fa fa-plus"></i>
                 </div>
               </form>
             </td>
             <td>
-              <p>{{product.price | currency:'USD'}}</p>
+              <p>{{product.price * product.quantity | currency:'USD'}}</p>
             </td>
           </tr>
           <tr class="border-0">
@@ -159,7 +162,7 @@
 
       </div>
 
-      <div  style="position: relative;" class="col-md-12 d-flex ">
+      <div  style="position: sticky;" class="col-md-12 d-flex ">
         <div  class="d-flex w-100 justify-content-between flex-sm-column flex-md-row">
           <a routerLink="/checkout" class="btn btn-danger btn-sm order-1">Checkout</a>
           <a routerLink="/" class="btn btn-success btn-sm order-0">Continue Shopping</a>

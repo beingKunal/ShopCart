@@ -47,7 +47,8 @@ export class NavComponent implements OnInit {
     return this.authService.loggedIn();
   }
 
-  Logout() {
+  Logout(event) {
+    console.log(event)
     localStorage.removeItem('token');
     this.toastr.success('LogOut Succesfully','',{positionClass: 'toast-bottom-right'});
     this.router.navigate(['']);
