@@ -1,3 +1,401 @@
-<p>
-  Checkout works!
-</p>
+<!-- <main class="">
+  <div class="container wow fadeIn">
+    <h2 class="my-5 h2 text-center">Checkout form</h2>
+
+    <div class="row">
+      <div class="col-md-8 mb-4">
+        <div class="card">
+          <form class="card-body">
+            <div class="md-form mb-5">
+              <input
+                type="text"
+                id="email"
+                class="form-control"
+                placeholder="youremail@example.com"
+              />
+              <label for="email" class="">Email (optional)</label>
+            </div>
+
+            <div class="md-form mb-5">
+              <input
+                type="text"
+                id="address"
+                class="form-control"
+                placeholder="1234 Main St"
+              />
+              <label for="address" class="">Address</label>
+            </div>
+
+            <div class="md-form mb-5">
+              <input
+                type="text"
+                id="address-2"
+                class="form-control"
+                placeholder="Apartment or suite"
+              />
+              <label for="address-2" class="">Address 2 (optional)</label>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-4 col-md-12 mb-4">
+                <label for="country">Country</label>
+                <select
+                  class="custom-select d-block w-100"
+                  id="country"
+                  required
+                >
+                  <option value="">Choose...</option>
+                  <option>United States</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4">
+                <label for="state">State</label>
+                <select class="custom-select d-block w-100" id="state" required>
+                  <option value="">Choose...</option>
+                  <option>California</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4">
+                <label for="zip">Zip</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="zip"
+                  placeholder=""
+                  required
+                />
+                <div class="invalid-feedback">Zip code required.</div>
+              </div>
+            </div>
+
+            <hr />
+
+            <div class="custom-control custom-checkbox">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="same-address"
+              />
+              <label class="custom-control-label" for="same-address"
+                >Shipping address is the same as my billing address</label
+              >
+            </div>
+
+            <hr />
+
+            <div class="d-block my-3">
+              <div class="custom-control custom-radio">
+                <input
+                  id="credit"
+                  name="paymentMethod"
+                  type="radio"
+                  class="custom-control-input"
+                  checked
+                  required
+                />
+                <label class="custom-control-label" for="credit"
+                  >Credit card</label
+                >
+              </div>
+              <div class="custom-control custom-radio">
+                <input
+                  id="debit"
+                  name="paymentMethod"
+                  type="radio"
+                  class="custom-control-input"
+                  required
+                />
+                <label class="custom-control-label" for="debit"
+                  >Debit card</label
+                >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="cc-name">Name on card</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cc-name"
+                  placeholder=""
+                  required
+                />
+                <small class="text-muted">Full name as displayed on card</small>
+                <div class="invalid-feedback">Name on card is required</div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="cc-number">Credit card number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cc-number"
+                  placeholder=""
+                  required
+                />
+                <div class="invalid-feedback">
+                  Credit card number is required
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">Expiration</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cc-expiration"
+                  placeholder=""
+                  required
+                />
+                <div class="invalid-feedback">Expiration date required</div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">CVV</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cc-cvv"
+                  placeholder=""
+                  required
+                />
+                <div class="invalid-feedback">Security code required</div>
+              </div>
+            </div>
+            <hr class="mb-4" />
+            <button class="btn btn-primary btn-lg btn-block" type="submit">
+              Place Order
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main> -->
+
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form [formGroup]="checkOutForm" (ngSubmit)="placeOrder()">
+        <div class="row">
+          <div class="col-50">
+            <h3>Billing Address</h3>
+            <div class="form-group">
+              <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+              <input [ngClass]="{
+                  'is-invalid':
+                    checkOutForm.get('fullName').errors &&
+                    checkOutForm.get('fullName').touched
+                }" type="text" id="fname" name="fullName" formControlName="fullName" placeholder="Enter name" />
+              <div class="invalid-feedback" *ngIf="
+                  checkOutForm.get('fullName').hasError('required') &&
+                  checkOutForm.get('fullName').touched
+                ">
+                Username field is required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email"><i class="fa fa-envelope"></i> Email</label>
+              <input [ngClass]="{
+                  'is-invalid':
+                    checkOutForm.get('email').errors &&
+                    checkOutForm.get('email').touched
+                }" type="text" id="email" name="email" formControlName="email" placeholder="john@example.com" />
+              <div class="invalid-feedback" *ngIf="
+                  checkOutForm.get('email').hasError('required') &&
+                  checkOutForm.get('email').touched
+                ">
+                Email field is required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+              <input [ngClass]="{
+                  'is-invalid':
+                    checkOutForm.get('address').errors &&
+                    checkOutForm.get('address').touched
+                }" type="text" id="adr" name="address" formControlName="address" placeholder="542 W. 15th Street" />
+              <div class="invalid-feedback" *ngIf="
+                  checkOutForm.get('address').hasError('required') &&
+                  checkOutForm.get('address').touched
+                ">
+                Address field is required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="city"><i class="fa fa-institution"></i> City</label>
+              <input [ngClass]="{
+                  'is-invalid':
+                    checkOutForm.get('city').errors &&
+                    checkOutForm.get('city').touched
+                }" type="text" id="city" name="city" formControlName="city" placeholder="Enter city" />
+              <div class="invalid-feedback" *ngIf="
+                  checkOutForm.get('city').hasError('required') &&
+                  checkOutForm.get('city').touched
+                ">
+                City field is required
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-50">
+                <div class="form-group">
+                  <label for="state">State</label>
+                  <input [ngClass]="{
+                      'is-invalid':
+                        checkOutForm.get('state').errors &&
+                        checkOutForm.get('state').touched
+                    }" type="text" id="state" name="state" formControlName="state" placeholder="NY" />
+                  <div class="invalid-feedback" *ngIf="
+                      checkOutForm.get('state').hasError('required') &&
+                      checkOutForm.get('state').touched
+                    ">
+                    State field is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-50">
+                <div class="form-group">
+                  <label for="zip">Zip</label>
+                  <input [ngClass]="{
+                      'is-invalid':
+                        checkOutForm.get('zip').errors &&
+                        checkOutForm.get('zip').touched
+                    }" type="text" id="zip" name="zip" formControlName="zip" placeholder="10001" />
+                  <div class="invalid-feedback" *ngIf="
+                      checkOutForm.get('zip').hasError('required') &&
+                      checkOutForm.get('zip').touched
+                    ">
+                    Zip Code is required
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-50">
+            <h3>Payment</h3>
+            <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color: navy"></i>
+              <i class="fa fa-cc-amex" style="color: blue"></i>
+              <i class="fa fa-cc-mastercard" style="color: red"></i>
+              <i class="fa fa-cc-discover" style="color: orange"></i>
+            </div>
+            <div class="form-group">
+              <label for="cname">Name on Card</label>
+              <input [ngClass]="{
+                  'is-invalid':
+                    checkOutForm.get('cardname').errors &&
+                    checkOutForm.get('cardname').touched
+                }" type="text" id="cname" name="cardname" formControlName="cardname" placeholder="John More Doe" />
+              <div class="invalid-feedback" *ngIf="
+                  checkOutForm.get('cardname').hasError('required') &&
+                  checkOutForm.get('cardname').touched
+                ">
+                Please enter cardname
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ccnum">Credit card number</label>
+              <input [ngClass]="{
+                  'is-invalid':
+                    checkOutForm.get('cardnumber').errors &&
+                    checkOutForm.get('cardnumber').touched
+                }" type="text" id="ccnum" name="cardnumber" formControlName="cardnumber"
+                placeholder="1111-2222-3333-4444" />
+              <div class="invalid-feedback" *ngIf="
+                  checkOutForm.get('cardnumber').hasError('required') &&
+                  checkOutForm.get('cardnumber').touched
+                ">
+                Please enter cardnumber
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="expmonth">Exp Month</label>
+              <input [ngClass]="{
+                  'is-invalid':
+                    checkOutForm.get('expmonth').errors &&
+                    checkOutForm.get('expmonth').touched
+                }" type="text" id="expmonth" name="expmonth" formControlName="expmonth" placeholder="September" />
+              <div class="invalid-feedback" *ngIf="
+                  checkOutForm.get('expmonth').hasError('required') &&
+                  checkOutForm.get('expmonth').touched
+                ">
+                Please enter Expiration Date
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-50">
+                <div class="form-group">
+                  <label for="expyear">Exp Year</label>
+                  <input [ngClass]="{
+                      'is-invalid':
+                        checkOutForm.get('expyear').errors &&
+                        checkOutForm.get('expyear').touched
+                    }" type="text" id="expyear" name="expyear" formControlName="expyear" placeholder="2018" />
+                  <div class="invalid-feedback" *ngIf="
+                      checkOutForm.get('expyear').hasError('required') &&
+                      checkOutForm.get('expyear').touched
+                    ">
+                    Please add Expiry Year
+                  </div>
+                </div>
+              </div>
+              <div class="col-50">
+                <div class="form-group">
+                  <label for="cvv">CVV</label>
+                  <input [ngClass]="{
+                      'is-invalid':
+                        checkOutForm.get('cvv').errors &&
+                        checkOutForm.get('cvv').touched
+                    }" type="text" id="cvv" name="cvv" formControlName="cvv" placeholder="352" />
+                  <div class="invalid-feedback" *ngIf="
+                      checkOutForm.get('cvv').hasError('required') &&
+                      checkOutForm.get('cvv').touched
+                    ">
+                    Please enter cvv code
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <label>
+          <input type="checkbox" checked="checked" name="sameadr" formControlName="sameaddress" />
+          Shipping address same as billing
+        </label>
+        <input type="submit" [disabled]="!checkOutForm.valid" value="Place Order" class="btn" />
+      </form>
+    </div>
+  </div>
+
+  <div class="col-25">
+    <div class="container">
+      <h4>
+        Cart
+        <span class="price" style="color: black">
+          <i class="fa fa-shopping-cart"></i>
+          <b>{{ cartItems.length }}</b>
+        </span>
+      </h4>
+      <div *ngFor="let product of cartItems">
+        <p>
+          {{ product.title
+          }}<span class="price">{{ product.price * product.quantity }}</span>
+        </p>
+      </div>
+      <hr />
+      <p>
+        Total
+        <span class="price" style="color: black"><b>{{ totalAmount | number }}</b></span>
+      </p>
+    </div>
+  </div>
+</div>

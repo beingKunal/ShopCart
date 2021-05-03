@@ -1,3 +1,6 @@
+import { ToastrModule } from 'ngx-toastr';
+import { CheckoutComponent } from './Checkout/Checkout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CartRoutingModule } from './cart-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -9,12 +12,15 @@ import { CartItemsResolver } from './_Resolvers/cart-Items.resolver';
 
 @NgModule({
   declarations: [
-    CartItemsComponent
+    CartItemsComponent,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    CartRoutingModule
+    CartRoutingModule,
+    ReactiveFormsModule,
+    ToastrModule
   ],
   providers:[CartItemsResolver]
   // exports:[CartItemsComponent]

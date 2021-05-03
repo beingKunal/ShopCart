@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     else{
-     this.toastr.warning("Please login to see Cart!!!");
+     this.toastr.warning("Please login to pass!!!");
       this.route.navigate(['']);
       return false;
     }
