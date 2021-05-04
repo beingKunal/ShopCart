@@ -20,7 +20,9 @@ import { CartItemsResolver } from './_Resolvers/cart-Items.resolver';
     HttpClientModule,
     CartRoutingModule,
     ReactiveFormsModule,
-    ToastrModule
+    // ToastrModule.forRoot({
+    //   positionClass:'toast-bottom-right'
+    // })
   ],
   providers:[CartItemsResolver]
   // exports:[CartItemsComponent]

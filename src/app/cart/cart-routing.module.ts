@@ -7,7 +7,7 @@ const routes: Routes = [{
   path: '',
   component: CartItemsComponent,
   resolve:{cartItems:CartItemsResolver}
-},{path:'checkout', component:CheckoutComponent}
+},{path:'checkout', component:CheckoutComponent,resolve:{cartItems:CartItemsResolver}}
 ]
 
 @NgModule({

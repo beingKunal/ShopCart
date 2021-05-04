@@ -20,6 +20,7 @@ import { CategoriesComponent } from './Products/categories/categories.component'
 import { PageNotFoundComponent } from './Shared/page-not-found/page-not-found.component';
 import { FooterComponent } from './Shared/footer/footer.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { FooterComponent } from './Shared/footer/footer.component';
     RegisterComponent,
     CategoriesComponent,
     PageNotFoundComponent,
-    FooterComponent
+    FooterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,10 @@ import { FooterComponent } from './Shared/footer/footer.component';
     NgxPaginationModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      positionClass:'toast-bottom-right'
+    }),
+
   ],
   // exports:[RegisterComponent],
   providers: [ProductDetailResolver,ProductGridResolver],

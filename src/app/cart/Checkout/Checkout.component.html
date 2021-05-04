@@ -274,6 +274,12 @@
                     ">
                     Zip Code is required
                   </div>
+                  <div class="invalid-feedback" *ngIf="
+                      checkOutForm.get('zip').hasError('minlength') || checkOutForm.get('zip').hasError('maxlength') || checkOutForm.get('zip').hasError('pattern')&&
+                      checkOutForm.get('zip').touched
+                    ">
+                    Invalid ZipCode
+                  </div>
                 </div>
               </div>
             </div>
@@ -328,7 +334,13 @@
                   checkOutForm.get('expmonth').hasError('required') &&
                   checkOutForm.get('expmonth').touched
                 ">
-                Please enter Expiration Date
+                Please enter Expiration Month
+              </div>
+              <div class="invalid-feedback" *ngIf="
+                  checkOutForm.get('expmonth').hasError('min') || checkOutForm.get('expmonth').hasError('max') &&
+                  checkOutForm.get('expmonth').touched
+                ">
+                Month should be in between 1 - 12
               </div>
             </div>
             <div class="row">
@@ -345,6 +357,12 @@
                       checkOutForm.get('expyear').touched
                     ">
                     Please add Expiry Year
+                  </div>
+                  <div class="invalid-feedback" *ngIf="
+                      checkOutForm.get('expyear').hasError('min') || checkOutForm.get('expyear').hasError('pattern') &&
+                      checkOutForm.get('expyear').touched
+                    ">
+                    Invalid ExpiryYear
                   </div>
                 </div>
               </div>

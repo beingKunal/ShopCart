@@ -14,7 +14,7 @@ export class CartItemsComponent implements OnInit {
   constructor(
     private cartService: CartServiceService,
     private route: ActivatedRoute,
-    private toastr:ToastrService
+    private toastr: ToastrService
   ) {}
   cartItems: Cart;
   totalPrice: number = 0;
@@ -36,7 +36,6 @@ export class CartItemsComponent implements OnInit {
     this.getTotalPrice();
   }
 
-
   getTotalPrice() {
     this.totalPrice = 0;
     this.cartItems.products.forEach((product) => {
@@ -46,11 +45,15 @@ export class CartItemsComponent implements OnInit {
   }
 
   increaseQty(product: Product) {
-    product.quantity < 4 ? (product.quantity += 1) : this.toastr.warning("Oops! Cannot exceed 4 quantities");
-    this.getTotalPrice()
+    product.quantity < 4
+      ? (product.quantity += 1)
+      : this.toastr.warning('Oops! Cannot exceed 4 quantities');
+    this.getTotalPrice();
   }
   decreaseQty(product: Product) {
-    product.quantity == 1 ?  this.toastr.warning("Please remove item from Cart"):(product.quantity -= 1) ;
-    this.getTotalPrice()
+    product.quantity == 1
+      ? this.toastr.warning('Please remove item from Cart')
+      : (product.quantity -= 1);
+    this.getTotalPrice();
   }
 }
