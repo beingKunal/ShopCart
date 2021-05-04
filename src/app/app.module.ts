@@ -17,6 +17,8 @@ import { ProductGridResolver } from './Products/_Resolvers/product-grid.resolver
 import { ToastrModule } from 'ngx-toastr';
 import { RegisterComponent } from './Shared/register/register.component';
 import { CategoriesComponent } from './Products/categories/categories.component';
+import { PageNotFoundComponent } from './Shared/page-not-found/page-not-found.component';
+import { FooterComponent } from './Shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { CategoriesComponent } from './Products/categories/categories.component'
     ProductComponent,
     ProductDetailsComponent,
     RegisterComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    PageNotFoundComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

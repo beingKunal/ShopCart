@@ -17,8 +17,11 @@
 }
 
 .col-75 {
-  -ms-flex: 75%;
-  flex: 75%;
+  position: relative;
+  left: 30px;
+  -ms-flex: 60%;
+  flex: 60%;
+  margin-right: 20px;
 }
 
 .col-25,
@@ -28,19 +31,21 @@
 }
 
 .container {
-  background-color: #f2f2f2;
+background-color: rgb(179, 214, 242,0.5);
+  /* background-image: url('../../../assets/Images/bgImage.jpg'); */
   padding: 5px 20px 15px 20px;
   border: 1px solid lightgrey;
+
   border-radius: 3px;
 }
 
-/* input[type=text] {
+input[type="text"] {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 3px;
-} */
+}
 
 label {
   margin-bottom: 10px;
@@ -54,7 +59,7 @@ label {
 }
 
 .btn {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
   padding: 12px;
   margin: 10px 0;

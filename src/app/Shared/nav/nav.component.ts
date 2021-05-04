@@ -37,9 +37,7 @@ export class NavComponent implements OnInit {
       (error) => {
         this.toastr.error('Login Error');
       },
-      () => {
-        this.router.navigate(['']);
-      }
+
     );
   }
 

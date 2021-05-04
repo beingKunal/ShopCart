@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './Shared/page-not-found/page-not-found.component';
 import { RegisterGuard } from './Shared/Guards/register.guard';
 import { RegisterComponent } from './Shared/register/register.component';
 import { AuthGuard } from './Shared/Guards/auth.guard';
@@ -28,6 +29,7 @@ const routes: Routes = [
     loadChildren: () => import('./cart/cart.module').then((m) => m.CartModule),
     canActivate:[AuthGuard]
   },
+  {path:'**' , component:PageNotFoundComponent}
 ];
 
 @NgModule({
