@@ -1,9 +1,9 @@
 import { ToastrService } from 'ngx-toastr';
-import { Product } from '../../Products/_Models/Product';
+import { IProduct } from '../../Products/_Models/IProduct';
 import { ActivatedRoute } from '@angular/router';
 import { CartServiceService } from './../cart-service.service';
 import { Component, OnInit } from '@angular/core';
-import { Cart } from '../_models/Cart';
+import { ICart } from '../_models/ICart';
 
 @Component({
   selector: 'app-cart-items',
@@ -16,7 +16,7 @@ export class CartItemsComponent implements OnInit {
     private route: ActivatedRoute,
     private toastr: ToastrService
   ) {}
-  cartItems: Cart;
+  cartItems: ICart;
   totalPrice: number = 0;
   totalAmount: number = 0;
   discount: number = 10;
@@ -24,16 +24,23 @@ export class CartItemsComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
       this.cartItems = data['cartItems'];
+      console.log(this.cartItems);
     });
     this.getTotalPrice();
     //this.getCartItems();
   }
-  Remove(product: Product) {
+  Remove(product: IProduct) {
     this.cartItems.products.splice(
       this.cartItems.products.indexOf(product, 0),
       1
     );
-    this.getTotalPrice();
+    this.cartService.addtoCart(this.cartItems.id, this.cartItems).subscribe(
+      () => {
+        this.toastr.success('Removed Successfully');
+      },
+      (error) => console.log(error),
+      () => this.getTotalPrice()
+    );
   }
 
   getTotalPrice() {
@@ -44,16 +51,28 @@ export class CartItemsComponent implements OnInit {
     this.totalAmount = this.totalPrice;
   }
 
-  increaseQty(product: Product) {
+  increaseQty(product: IProduct) {
     product.quantity < 4
-      ? (product.quantity += 1)
+      ? this.updateCart(product, true)
       : this.toastr.warning('Oops! Cannot exceed 4 quantities');
     this.getTotalPrice();
   }
-  decreaseQty(product: Product) {
+  decreaseQty(product: IProduct) {
     product.quantity == 1
       ? this.toastr.warning('Please remove item from Cart')
-      : (product.quantity -= 1);
+      : this.updateCart(product, false);
     this.getTotalPrice();
+  }
+
+  updateCart(product: IProduct, isIncrease: boolean) {
+    isIncrease ? (product.quantity += 1) : (product.quantity -= 1);
+    this.cartService.addtoCart(this.cartItems.id, this.cartItems).subscribe(
+      () => {
+        this.toastr.success('Quantity Updated Successfully');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

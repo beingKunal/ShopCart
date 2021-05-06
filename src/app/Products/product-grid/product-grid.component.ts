@@ -1,7 +1,7 @@
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Product } from '../_Models/Product';
+import { IProduct } from '../_Models/IProduct';
 import { ProductService } from '../_Services/Product.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
@@ -18,7 +18,7 @@ export class ProductGridComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private toastr: ToastrService
   ) {}
-  products: Product[];
+  products: IProduct[];
   searchForm: FormGroup;
   totalRecords: number;
   page: number = 1;
