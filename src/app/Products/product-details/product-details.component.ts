@@ -35,11 +35,11 @@ export class ProductDetailsComponent implements OnInit {
   addtoCart(item: IProduct, target ) {
     this.cartService.getCart().subscribe((data) => {
       this.cart = data;
-      console.log("Product", item)
-      console.log("products", this.cart.products)
+      // console.log("Product", item)
+      // console.log("products", this.cart.products)
 
       // console.log("Index is", this.cart.products.findIndex((product)=>product.id == product.id,1))
-      console.log("Filter ?", this.cart.products.filter((product) => product.id == product.id))
+      // console.log("Filter ?", this.cart.products.filter((product) => product.id == product.id))
       this.cart.products.filter((product) => product.id == item.id).length > 0
         ? this.toastr.info("Already in Cart")
         : this.updateCart(item)
@@ -55,7 +55,7 @@ export class ProductDetailsComponent implements OnInit {
   updateCart(product: IProduct) {
     product.quantity = 1;
     this.cart.products.push(product);
-    console.log("inside update cart", this.cart)
+    // console.log("inside update cart", this.cart)
     this.cartService.addtoCart(this.cart.id, this.cart).subscribe((response) => {
       this.toastr.success(this.product.title + ' added to Cart!');
     }, (error) => this.toastr.error("Something went Wrong"))

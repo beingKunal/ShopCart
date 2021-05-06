@@ -1,22 +1,14 @@
-/* table{
-  width: 700px;
-  height: 70px;
-
- overflow-y: scroll;
-  border: 1px solid red;
-} */
-
-a{
+a {
   color: black;
 }
-a:hover{
+a:hover {
   text-decoration: none;
   color: blue;
-  transform: scale(1.0,1.0);
+  transform: scale(1, 1);
   transition-duration: 500ms;
 }
-a:active{
-  color:red;
+a:active {
+  color: red;
 }
 
 form {
@@ -28,24 +20,12 @@ form {
 .value-button {
   display: inline-block;
   border: 1px solid #ddd;
-  // margin: 0px;
+
   width: 40px;
   height: 40px;
-  // vertical-align: middle;
-  padding: 10px 0 12px;
-  // text-align: center;
-  // background: #eee;
-  // -webkit-touch-callout: none;
-  // -webkit-user-select: none;
-  // -khtml-user-select: none;
-  // -moz-user-select: none;
-  // -ms-user-select: none;
-  // user-select: none;
-}
 
-// .value-button:hover {
-//   cursor: pointer;
-// }
+  padding: 10px 0 12px;
+}
 
 form #decrease {
   margin-right: -4px;
@@ -63,11 +43,6 @@ form #increase {
   cursor: pointer;
 }
 
-/* form #input-wrap {
-  margin: 0px;
-  padding: 0px;
-} */
-
 input#number {
   text-align: center;
   border: none;
@@ -78,15 +53,11 @@ input#number {
   height: 40px;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-// input[type=number]{
-// text-align: right;
-// }
 
 tbody {
   tr {
@@ -102,12 +73,12 @@ tbody {
 
     &:last-of-type {
       td {
-
         &:first-child {
           border-top: 1px solid #dee2e6 !important;
         }
 
-        &:nth-child(4), &:nth-child(5) {
+        &:nth-child(4),
+        &:nth-child(5) {
           border-left: 1px solid #dee2e6;
           border-right: 1px solid #dee2e6;
           border-bottom: 1px solid #dee2e6;
@@ -115,11 +86,7 @@ tbody {
           font-size: 1.3rem;
           text-align: center;
         }
-
-
       }
-
     }
-
   }
 }
