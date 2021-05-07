@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL: "https://fakestoreapi.com"
+  BASE_URL: "https://my-json-server.typicode.com/beingKunal/nagpServer"
 };
 
 /*

@@ -9,8 +9,8 @@ import { BehaviorSubject, of } from 'rxjs';
 })
 export class ProductService{
   constructor(private http: HttpClient){}
-  // baseUrl = environment.BASE_URL;
-  baseUrl = 'http://localhost:3000'
+  baseUrl = environment.BASE_URL;
+  //baseUrl = 'http://localhost:3000'
   searchKey = new BehaviorSubject<string>("");
 
 

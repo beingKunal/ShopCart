@@ -8,8 +8,8 @@ import { Injectable } from '@angular/core';
 })
 export class CartServiceService {
 
-  // baseUrl = environment.BASE_URL ;
-  baseUrl = 'http://localhost:3000'
+  baseUrl = environment.BASE_URL ;
+  //baseUrl = 'http://localhost:3000'
   constructor(private http : HttpClient) { }
   //cartUrl = "../../assets/Templates/Cart.json";
   getCart(){
