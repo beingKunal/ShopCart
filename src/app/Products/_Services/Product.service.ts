@@ -28,9 +28,9 @@ export class ProductService{
   }
 
   searchProducts(keyword:string){
-    return this.http.get<IProduct[]>(this.baseUrl+'/products')
-    .pipe(map(data => data.filter(product => product.description.includes(keyword)
-                                  || product.title.includes(keyword))));
+    return this.http.get<IProduct[]>(this.baseUrl+`/products?description_like=${keyword}title_like=${keyword}`)
+    // .pipe(map(data => data.filter(product => product.description.includes(keyword)
+    //                               || product.title.includes(keyword))));
   }
 
   getCategories(){
