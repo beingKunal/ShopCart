@@ -15,7 +15,7 @@ export class ProductDetailResolver implements Resolve<IProduct> {
   resolve(route: ActivatedRouteSnapshot): Observable<IProduct>{
     return this.productService.getProduct(route.params['id']).pipe(
       catchError(error => {
-        //this.router.navigate(['/members']);
+        this.router.navigate(['']);
         return of(null);
       })
     )
