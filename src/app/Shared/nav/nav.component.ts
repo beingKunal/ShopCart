@@ -31,6 +31,7 @@ export class NavComponent implements OnInit {
     });
   }
   login() {
+    this.loginForm.get('Password').reset()
     this.authService.login(this.loginForm.value).subscribe(
       (response) => {
         this.toastr.success('login Successful');
