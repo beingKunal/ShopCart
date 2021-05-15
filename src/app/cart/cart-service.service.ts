@@ -1,6 +1,6 @@
 import { ICart } from './_models/ICart';
 import { environment } from './../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -17,6 +17,7 @@ export class CartServiceService {
   }
 
   addtoCart(id:number , cart:ICart){
+
     return this.http.put<ICart>(this.baseUrl+'/carts/' + id , cart);
   }
 

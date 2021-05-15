@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../Auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ThrowStmt } from '@angular/compiler';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav',
@@ -16,7 +16,8 @@ export class NavComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private translate : TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -53,5 +54,8 @@ export class NavComponent implements OnInit {
 
   Register() {
     this.router.navigate(['/register']);
+  }
+  changeLanguage(lang : string){
+    this.translate.use(lang)
   }
 }

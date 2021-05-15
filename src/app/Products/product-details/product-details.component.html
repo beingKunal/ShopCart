@@ -7,7 +7,7 @@
         <div class="card-footer">
           <div class="btn-group d-flex">
             <button class="btn btn-success w-100" type="button" (click)="
-                loggedIn() ? cartOptions(product, $event.target,ifGoToCart) : navigate()
+                loggedIn() ? cartOptions(product, $event.target,ifGoToCart) : null
               ">
               {{ loggedIn() ? "Add to Cart" : "LogIn to Add to Cart" }}
             </button>

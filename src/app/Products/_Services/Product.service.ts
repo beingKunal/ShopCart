@@ -24,11 +24,10 @@ export class ProductService{
 
   filterProductsByCategory(category:string){
     return this.http.get<IProduct[]>(this.baseUrl+`/products?category=${category}`);
-    // .pipe(map(data => data.filter(product => product.category == category)));
   }
 
   searchProducts(keyword:string){
-    return this.http.get<IProduct[]>(this.baseUrl+`/products?description_like=${keyword}title_like=${keyword}`)
+    return this.http.get<IProduct[]>(this.baseUrl+`/products?title_like=${keyword}`)
     // .pipe(map(data => data.filter(product => product.description.includes(keyword)
     //                               || product.title.includes(keyword))));
   }

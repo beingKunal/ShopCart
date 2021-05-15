@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartItemsComponent } from './cart-items/cart-items.component';
 import { CartItemsResolver } from './_Resolvers/cart-Items.resolver';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -20,9 +21,9 @@ import { CartItemsResolver } from './_Resolvers/cart-Items.resolver';
     HttpClientModule,
     CartRoutingModule,
     ReactiveFormsModule,
-    // ToastrModule.forRoot({
-    //   positionClass:'toast-bottom-right'
-    // })
+    TranslateModule.forChild({
+      extend: true
+    })
   ],
   providers:[CartItemsResolver]
   // exports:[CartItemsComponent]
